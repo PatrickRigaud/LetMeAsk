@@ -57,7 +57,6 @@ export function Sala({nomeSala, textoPergunta, nomeUsuario}){
         </footer>
     </div>
     }
-
     const mapearPerguntas = lista.map((perguntaUser) => {
         return pergunta(perguntaUser.mensagem, perguntaUser.usuario, perguntaUser.id)
     })
