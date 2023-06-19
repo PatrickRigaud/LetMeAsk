@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+
+.telaInteira {
+    background-color: rgba(0, 0, 0, 0.555);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caixaDialogo {
+    background-color: #F8F8F8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    width: 590px;
+    height: 362px;
+    border-radius: 8px;
+    box-sizing: border-box;
+
+}
+
+.iconeLixo {
+    height: 40px;
+    width: 28px;
+    margin-top: 0;
+}
+
+h2 {
+    margin-top: 24px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 34px;
+}
+
+p {
+    margin-top: 12px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.btnCancelar {
+    width: 132px;
+    height: 50px;
+}
+
+.btnConfirmarExclusao {
+    width: 132px;
+    height: 50px;
+}

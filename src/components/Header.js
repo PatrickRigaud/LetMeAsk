@@ -22,7 +22,7 @@ export function Header() {
                         <span className="copiar-sala-quadrado q2"></span>
                     </span>
                     
-                    <spam className="codigo-sala">Sala #323243</spam>
+                    <span className="codigo-sala">Sala #323243</span>
                 </div>
                 <button className="btn-encerrar-sala">Encerrar sala</button>
             </div>
