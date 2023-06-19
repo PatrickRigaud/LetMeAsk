@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 
-.cabecalho{
+.cabecalho {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -9,25 +9,26 @@
     height: 89px;
     border-bottom: 1px solid #E2E2E2;
     box-sizing: border-box;
+    gap: 150px;
 }
 
-.logo-full{
+.logo-full {
     display: flex;
     align-items: center;
 }
 
-.ask{
+.ask {
     position: relative;
     left: 42px;
 }
 
-.letme{
+.letme {
     margin-right: -4px;
     position: relative;
     left: 42px;
 }
 
-.numero-sala{
+.numero-sala {
     box-sizing: border-box;
     border: 1px solid #835AFD;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -39,7 +40,7 @@
     padding-left: 52px;
 }
 
-.caixa-logo{
+.caixa-logo {
     background-color: #835AFD;
     width: 39px;
     height: 39px;
@@ -49,15 +50,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
 
-.caixas{
+.caixas {
     display: flex;
     gap: 10px;
 }
 
-.copiar-sala-quadrado{
+.copiar-sala-quadrado {
     border: 1.5px solid #FEFEFE;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     width: 9.83px;
@@ -65,31 +66,31 @@
     border-radius: 2px;
 }
 
-.q1{
+.q1 {
     position: absolute;
     top: 11px;
     left: 11px;
-    
+
 }
 
-.q2{
+.q2 {
     position: absolute;
     bottom: 11px;
     right: 11px;
     background-color: #835AFD;
 }
 
-.codigo-sala{
+.codigo-sala {
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
     color: #29292E;
-    
+
 }
 
-.btn-encerrar-sala{
+.btn-encerrar-sala {
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
     border: 1px solid #835AFD;
@@ -101,5 +102,4 @@
     display: flex;
     align-items: center;
     padding-left: 22px;
-    background-color: white;
 }

@@ -8,20 +8,26 @@ export function Sala({nomeSala, textoPergunta, nomeUsuario}){
 
     const listaPerguntas = [
         {mensagem: 'Qual a cor do céu?',
-         usuario: 'Alexandre'}
-        
+         usuario: 'Alexandre'},
+         {mensagem: 'Qual a cor do céu?',
+         usuario: 'Alexandre'},
+         {mensagem: 'Qual a cor do céu?',
+         usuario: 'Alexandre'},
     ]
 
     let temPergunta = ''
 
     if(listaPerguntas.length > 0){
-        temPergunta = `Perguntas ${listaPerguntas.length}`
+        temPergunta = `${listaPerguntas.length} perguntas`
     } else{
         temPergunta = 'Sem perguntas'
     }
 
-    const pergunta = <div>
-        <p>{textoPergunta}</p>
+
+    const pergunta = (textoPergunta, nomeUsuario) => {
+    
+    return <div className="pergunta">
+        <p className='textoPergunta'>{textoPergunta}</p>
         <footer>
             <div className="usuario">
                 <div className='circulo'><img src={icone_usuario} alt="icone de usuario"></img></div>
@@ -35,8 +41,11 @@ export function Sala({nomeSala, textoPergunta, nomeUsuario}){
             </div>
         </footer>
     </div>
+    }
 
-
+    const mapearPerguntas = listaPerguntas.map((perguntaUser) => {
+        return pergunta(perguntaUser.mensagem, perguntaUser.usuario)
+    })
 
     return (
         <>
@@ -46,7 +55,7 @@ export function Sala({nomeSala, textoPergunta, nomeUsuario}){
                 <div className="quantidadePerguntas">{temPergunta}</div>
             </div>
             <main className="centroPrincipal">
-            {pergunta}
+            {mapearPerguntas}
             </main>
         </div>
         </>

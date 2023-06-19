@@ -7,8 +7,8 @@ function App() {
     <Header/>
     <Sala 
     nomeSala = "Teste React"
-    textoPergunta = "ceu azul?"
-    nomeUsuario = "pedro"/>
+    textoPergunta = "Olá, eu gostaria de saber como criar um componente funcional dentro do React e se existe diferença na perfomance entre um componente com classes."
+    nomeUsuario = "Patrick Wesley de Andrade Rigaud"/>
     </>
   );
 }
