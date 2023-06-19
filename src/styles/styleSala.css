@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+.centroPrincipal {
+    width: 1000px;
+    background-color: red;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+.caixasTitulo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: start;
+    margin-right: 650px;
+    gap: 20px;
+}
+
+.tituloSala{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.quantidadePerguntas{
+    background-color: #835AFD;
+    color: white;
+    width: 112px;
+    height: 32px;
+    border-radius: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+}
