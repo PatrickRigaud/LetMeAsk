@@ -8,6 +8,7 @@ import sem_perguntas_img from '../assets/sem_perguntas.svg'
 export default function Sala({nomeSala, textoPergunta, nomeUsuario}){
 
     let [lista, setLista] = useState(listaPerguntas);
+    
     const [quantidadePerguntas, setQuantidadePerguntas] = useState(
         listaPerguntas.length
       );

@@ -20,7 +20,9 @@ export function TelaLogin(){
                     <img className="logo" src={logo} alt="logo"/>
           
                 </div>
-                <button className="btn_todas_salas">Buscar todas as salas</button>
+                <Link to="/grupoSalas">
+                    <button className="btn_todas_salas">Buscar todas as salas</button>
+                </Link>
                 <form className='opcoes'>
                     <h2 className="textoLogin">-- Entre em uma sala --</h2>
                     <input placeholder='Digite o código da sala' className='inp_codigo_sala'/>
