@@ -3,7 +3,7 @@ import excluir from '../assets/excluir_vermelho.svg'
 
 
 
-export function ExcluirPergunta({isOpen, setModalOpen, id, setLista, lista, encerrarItem, confirmacaoDelete}) {
+export function ExcluirPergunta({isOpen, setModalOpen, id, setLista, lista, encerrarItem, confirmacaoDelete, atualizarQuantidadePerguntas}) {
     
     const excluirItem = () => {
         const listaNova = lista.filter(elemento => {
@@ -11,6 +11,8 @@ export function ExcluirPergunta({isOpen, setModalOpen, id, setLista, lista, ence
         })
         
         setModalOpen()
+        setLista(listaNova)
+        atualizarQuantidadePerguntas(listaNova.length)
         return listaNova
     }
 

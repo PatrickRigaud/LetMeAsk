@@ -8,6 +8,13 @@ import sem_perguntas_img from '../assets/sem_perguntas.svg'
 export function Sala({nomeSala, textoPergunta, nomeUsuario}){
 
     let [lista, setLista] = useState(listaPerguntas);
+    const [quantidadePerguntas, setQuantidadePerguntas] = useState(
+        listaPerguntas.length
+      );
+
+      const atualizarQuantidadePerguntas = (quantidade) => {
+        setQuantidadePerguntas(quantidade);
+      };
     
     const verificarPerguntas = () => {
         if(lista.length == 0){
@@ -33,6 +40,7 @@ export function Sala({nomeSala, textoPergunta, nomeUsuario}){
       id={perguntaUser.id}
       setLista={setLista}
       lista={lista}
+      atualizarQuantidadePerguntas={atualizarQuantidadePerguntas}
     />
     })
 
@@ -43,7 +51,7 @@ export function Sala({nomeSala, textoPergunta, nomeUsuario}){
         <div className="center">
             <div className="caixasTitulo">
                 <h2 className="tituloSala">{nomeSala}</h2>
-                <div className="quantidadePerguntas">{qtdPerguntasIcon()}</div>
+                <div className="quantidadePerguntas">{qtdPerguntasIcon(quantidadePerguntas)}</div>
             </div>
             <main className="centroPrincipal">
             
