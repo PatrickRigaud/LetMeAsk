@@ -32,6 +32,8 @@ export function Perguntas({textoPergunta, nomeUsuario, id, setLista, lista}){
                 id={id}
                 setLista={setLista}
                 lista={lista}
+                encerrarItem={"Excluir pergunta"}
+                confirmacaoDelete={"Tem certeza que você deseja excluir esta pergunta?"}
             />
         </div>
         }

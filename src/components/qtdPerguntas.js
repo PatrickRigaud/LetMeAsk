@@ -3,6 +3,7 @@ import {listaPerguntas} from '../bancoPerguntas/bancoPerguntas'
 
 export const qtdPerguntasIcon = () => {
 
+
     let temPergunta = ''
 
     if(listaPerguntas.length > 0){

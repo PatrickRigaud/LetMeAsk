@@ -2,10 +2,14 @@ import '../styles/styleHeader.css'
 import logo from '../assets/logo.svg'
 import ask from '../assets/ask.svg'
 import letme from '../assets/letme.svg'
+import { ExcluirPergunta } from './ModalExcluirPergunta'
+import React, { useState } from 'react';
 
 
 export function Header() {
-    
+    const [openModal, setModal] = useState(false);
+
+
     return <>
         <header className="cabecalho">
             
@@ -24,7 +28,17 @@ export function Header() {
                     
                     <span className="codigo-sala">Sala #323243</span>
                 </div>
-                <button className="btn-encerrar-sala">Encerrar sala</button>
+                <button className="btn-encerrar-sala" onClick={() =>
+                        setModal(true)}>Encerrar sala</button>
+                <ExcluirPergunta 
+                    isOpen={openModal}
+                    setModalOpen={() => setModal(!openModal)}
+                    // id={id}
+                    // setLista={setLista}
+                    // lista={lista}
+                    encerrarItem={"Fechar sala"}
+                    confirmacaoDelete={"Tem certeza que você deseja fechar esta sala?"}
+            />
             </div>
         </header>
     </>
