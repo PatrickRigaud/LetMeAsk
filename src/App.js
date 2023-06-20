@@ -1,17 +1,20 @@
 import './App.css';
 import { Header } from './components/Header';
 import { Sala } from './screens/sala';
+import {TelaLogin} from './screens/telaLogin';
 
 function App() {
   
 
   return (<>
-  
-    <Header/>
+  <TelaLogin/>
+    
+    
+    {/* <Header/>
     <Sala 
     nomeSala = "Descarga/Defesa"
     textoPergunta = "Olá, eu gostaria de saber como criar um componente funcional dentro do React e se existe diferença na perfomance entre um componente com classes."
-    nomeUsuario = "Patrick Wesley de Andrade Rigaud"/>
+    nomeUsuario = "Patrick Wesley de Andrade Rigaud"/>  */}
     
     </>
   );
