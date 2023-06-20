@@ -1,7 +1,5 @@
 import '../styles/styleHeader.css'
-import logo from '../assets/logo.svg'
-import ask from '../assets/ask.svg'
-import letme from '../assets/letme.svg'
+import logo from '../assets/logo_header.svg'
 import { ExcluirPergunta } from './ModalExcluirPergunta'
 import React, { useState } from 'react';
 
@@ -15,9 +13,7 @@ export function Header() {
         <header className="cabecalho">
             
             <div className="logo-full">
-                <img className="letme" src={letme} alt="letme"/>
-                <img className="ask" src={ask} alt="ask"/>
-                <img className="logo" src={logo} alt="logo"/>
+                <img className="letme" src={logo} alt="letme"/>
             </div>
             
         <div className="caixas">
