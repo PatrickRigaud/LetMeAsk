@@ -137,3 +137,33 @@ footer {
 .p_semperguntas {
     margin-top: -15px;
 }
+
+.check {
+    background-image: url("../assets/checkmark-circle-1.svg");
+    height: 24px;
+    width: 24px;
+}
+
+.check:hover {
+    background-image: url("../assets/check_hover.svg");
+}
+
+.excluir {
+    background-image: url("../assets/Excluir.svg");
+    height: 24px;
+    width: 24px;
+}
+
+.excluir:hover {
+    background-image: url("../assets/Excluir_hover.svg");
+}
+
+.messages {
+    background-image: url("../assets/Messages.svg");
+    height: 24px;
+    width: 24px;
+}
+
+.messages:hover {
+    background-image: url("../assets/Messages_hover.svg");
+}
