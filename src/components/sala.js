@@ -1,11 +1,11 @@
 import '../styles/styleSala.css';
 import React, { useState } from 'react';
-import {Perguntas} from '../components/PerguntasCaixas';
-import {qtdPerguntasIcon}  from '../components/qtdPerguntas';
+import {Perguntas} from './PerguntasCaixas';
+import {qtdPerguntasIcon}  from './qtdPerguntas';
 import { listaPerguntas } from '../bancoPerguntas/bancoPerguntas';
 import sem_perguntas_img from '../assets/sem_perguntas.svg'
 
-export function Sala({nomeSala, textoPergunta, nomeUsuario}){
+export default function Sala({nomeSala, textoPergunta, nomeUsuario}){
 
     let [lista, setLista] = useState(listaPerguntas);
     const [quantidadePerguntas, setQuantidadePerguntas] = useState(

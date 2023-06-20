@@ -6,6 +6,7 @@ import { ExcluirPergunta } from './ModalExcluirPergunta'
 import React, { useState } from 'react';
 
 
+
 export function Header() {
     const [openModal, setModal] = useState(false);
 
@@ -33,11 +34,9 @@ export function Header() {
                 <ExcluirPergunta 
                     isOpen={openModal}
                     setModalOpen={() => setModal(!openModal)}
-                    // id={id}
-                    // setLista={setLista}
-                    // lista={lista}
                     encerrarItem={"Fechar sala"}
                     confirmacaoDelete={"Tem certeza que você deseja fechar esta sala?"}
+                    
             />
             </div>
         </header>
