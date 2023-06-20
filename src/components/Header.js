@@ -1,6 +1,6 @@
 import '../styles/styleHeader.css'
 import logo from '../assets/logo_header.svg'
-import { ExcluirPergunta } from './ModalExcluirPergunta'
+import { ExcluirPergunta } from './perguntas/ModalExcluirPergunta'
 import React, { useState } from 'react';
 
 

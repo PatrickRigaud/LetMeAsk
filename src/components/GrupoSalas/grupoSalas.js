@@ -1,10 +1,10 @@
-import { listaSalas } from "../bancoPerguntas/bancoSalas"
+import { listaSalas } from "../../bancoPerguntas/bancoSalas"
 import { CaixaSala } from "./caixaSala";
-import imagemLogin from '../assets/tela_login_imagem.svg'
+import imagemLogin from '../../assets/tela_login_imagem.svg'
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import login from '../assets/login.svg'
-import "../styles/styleGrupoSalas.css"
+import login from '../../assets/login.svg'
+import "../../styles/styleGrupoSalas.css"
 
 export function GrupoSalas(){
 

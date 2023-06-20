@@ -1,9 +1,9 @@
-import '../styles/styleSala.css';
+import '../../styles/styleSala.css';
 import React, { useState } from 'react';
 import {Perguntas} from './PerguntasCaixas';
 import {qtdPerguntasIcon}  from './qtdPerguntas';
-import { listaPerguntas } from '../bancoPerguntas/bancoPerguntas';
-import sem_perguntas_img from '../assets/sem_perguntas.svg'
+import { listaPerguntas } from '../../bancoPerguntas/bancoPerguntas';
+import sem_perguntas_img from '../../assets/sem_perguntas.svg'
 
 export default function Sala({nomeSala, textoPergunta, nomeUsuario}){
 

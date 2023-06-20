@@ -1,4 +1,4 @@
-import TelaSala from "../components/sala"
+import TelaSala from "../components/perguntas/sala"
 import React from 'react'
 import { Header } from "../components/Header";
 

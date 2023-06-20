@@ -1,4 +1,4 @@
-import {listaPerguntas} from '../bancoPerguntas/bancoPerguntas'
+import {listaPerguntas} from '../../bancoPerguntas/bancoPerguntas'
 
 
 export const qtdPerguntasIcon = (quantidadePerguntas) => {

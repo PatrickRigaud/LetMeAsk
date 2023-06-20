@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import icone_usuario from '../assets/icone_usuario.svg'
-import '../styles/styleSala.css'
-import {ExcluirPergunta} from '../components/ModalExcluirPergunta';
+import icone_usuario from '../../assets/icone_usuario.svg'
+import '../../styles/styleSala.css'
+import {ExcluirPergunta} from './ModalExcluirPergunta';
 
 
 export function Perguntas({textoPergunta, nomeUsuario, id, setLista, lista, atualizarQuantidadePerguntas}){

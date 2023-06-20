@@ -1,4 +1,4 @@
-import "../styles/styleGrupoSalas.css"
+import "../../styles/styleGrupoSalas.css"
 
 
 export function CaixaSala({nomeSala, quantidadePerguntasSala, id}){

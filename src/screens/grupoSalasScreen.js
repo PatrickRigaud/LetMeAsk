@@ -1,4 +1,4 @@
-import { GrupoSalas } from '../components/grupoSalas';
+import { GrupoSalas } from '../components/GrupoSalas/grupoSalas';
 import React from 'react'
 
 

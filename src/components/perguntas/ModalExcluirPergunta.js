@@ -1,5 +1,5 @@
-import '../styles/styleExcluirPergunta.css'
-import excluir from '../assets/excluir_vermelho.svg'
+import '../../styles/styleExcluirPergunta.css'
+import excluir from '../../assets/excluir_vermelho.svg'
 
 
 
