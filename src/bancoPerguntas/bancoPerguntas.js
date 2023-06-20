@@ -2,9 +2,13 @@
 
 export const listaPerguntas = [
     {id:1,
-    mensagem: 'Qual a cor do céu?',
-    usuario: 'Pedro'},
+        mensagem: 'Qual a cor do céu?',
+        usuario: 'Pedro'},
     {id:2,
-    mensagem: 'Qual a cor do céu?',
-    usuario: 'Alexandre'}
+        mensagem: 'Qual a cor do céu?',
+        usuario: 'Alexandre'},
+    {id:3,
+        mensagem: 'Qual a cor do céu?',
+        usuario: 'Murilo'}
+ 
 ]

@@ -60,14 +60,35 @@ p {
     flex-direction: row;
     gap: 8px;
     margin-top: 40px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
 }
 
 .btnCancelar {
     width: 132px;
     height: 50px;
+    border-radius: 8px;
+    border: none;
+    background-color: #DBDCDD;
 }
 
 .btnConfirmarExclusao {
+    color: white;
     width: 132px;
     height: 50px;
+    background-color: #E73F5D;
+    border-radius: 8px;
+    border: none;
+}
+
+.btnCancelar:hover {
+    background-color: #a7a7a7;
+}
+
+.btnConfirmarExclusao:hover {
+    background-color: #970f28;
 }

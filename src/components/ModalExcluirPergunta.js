@@ -1,9 +1,18 @@
 import '../styles/styleExcluirPergunta.css'
 import excluir from '../assets/excluir_vermelho.svg'
 
-
-export function ExcluirPergunta({isOpen, setModalOpen}) {
+export function ExcluirPergunta({isOpen, setModalOpen, id, setLista, lista}) {
     
+    const excluirItem = () => {
+        const listaNova = lista.filter(elemento => {
+            return id != elemento.id
+        })
+        
+        setModalOpen()
+        return listaNova
+    }
+
+
     if(isOpen){
 
     return (<>
@@ -14,7 +23,9 @@ export function ExcluirPergunta({isOpen, setModalOpen}) {
                     <p>Tem certeza que você deseja excluir esta pergunta?</p>
                     <div className="botoes">
                         <button className="btnCancelar" onClick={setModalOpen}>Cancelar</button>
-                        <button className="btnConfirmarExclusao">Sim, excluir</button>
+                        <button className="btnConfirmarExclusao" onClick={() => {
+                            setLista(excluirItem())
+                        }}>Sim, excluir</button>
                     </div>
                 </main>
             </div>

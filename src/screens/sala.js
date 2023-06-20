@@ -1,18 +1,30 @@
 import '../styles/styleSala.css';
-import {ExcluirPergunta} from '../components/ModalExcluirPergunta';
 import React, { useState } from 'react';
 import {Perguntas} from '../components/PerguntasCaixas';
 import {qtdPerguntasIcon}  from '../components/qtdPerguntas';
-
+import { listaPerguntas } from '../bancoPerguntas/bancoPerguntas';
 
 export function Sala({nomeSala, textoPergunta, nomeUsuario}){
+
     
-    const [openModal, setModal] = useState(false)
     
+  
+    let [lista, setLista] = useState(listaPerguntas);
+
+    const mapearPerguntas = lista.map((perguntaUser) => {
+        return <Perguntas
+      textoPergunta={perguntaUser.mensagem}
+      nomeUsuario={perguntaUser.usuario}
+      id={perguntaUser.id}
+      setLista={setLista}
+      lista={lista}
+    />
+    })
+
 
     return (
         <>
-        <ExcluirPergunta isOpen={openModal} setModalOpen={() => setModal(!openModal)}/>
+        
         <div className="center">
             <div className="caixasTitulo">
                 <h2 className="tituloSala">{nomeSala}</h2>
@@ -20,7 +32,8 @@ export function Sala({nomeSala, textoPergunta, nomeUsuario}){
             </div>
             <main className="centroPrincipal">
             
-            <Perguntas setModal={setModal} />
+            <>{mapearPerguntas}</>
+            
             </main>
         </div>
         </>

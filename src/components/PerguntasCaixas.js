@@ -4,16 +4,14 @@ import check from '../assets/checkmark-circle-1.svg'
 import excluir from '../assets/Excluir.svg'
 import messages from '../assets/Messages.svg'
 import '../styles/styleSala.css'
-import {listaPerguntas} from '../bancoPerguntas/bancoPerguntas'
-
-export function Perguntas({setModal}){
-
-    let [lista, setLista] = useState(listaPerguntas)
+import {ExcluirPergunta} from '../components/ModalExcluirPergunta';
 
 
-    const pergunta = (textoPergunta, nomeUsuario, id) => {
-    
-        return <div className="pergunta" key={id}>
+export function Perguntas({textoPergunta, nomeUsuario, id, setLista, lista}){
+
+    const [openModal, setModal] = useState(false);
+        
+        return <div className="pergunta"  key={id}>
             <p className='textoPergunta'>{textoPergunta}</p>
             <footer>
                 <div className="usuario">
@@ -23,19 +21,17 @@ export function Perguntas({setModal}){
     
                 <div className="icones">
                     <img src={check} alt="check"></img>
-                    <img src={excluir} alt="excluir" onClick={() => setModal(true)}/>
+                    <img src={excluir} alt="excluir" onClick={() =>
+                        setModal(true)}/>
                     <img src={messages} alt="messages"></img>
                 </div>
             </footer>
+            <ExcluirPergunta 
+                isOpen={openModal}
+                setModalOpen={() => setModal(!openModal)}
+                id={id}
+                setLista={setLista}
+                lista={lista}
+            />
         </div>
         }
-
-   const mapearPerguntas = lista.map((perguntaUser) => {
-    return pergunta(perguntaUser.mensagem, perguntaUser.usuario, perguntaUser.id)
-})
-    
-    return (
-        <>{mapearPerguntas}</>
-    )
-
-}
