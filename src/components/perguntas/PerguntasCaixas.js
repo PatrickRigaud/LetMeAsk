@@ -33,6 +33,7 @@ export function Perguntas({textoPergunta, nomeUsuario, id, setLista, lista, atua
                 encerrarItem={"Excluir pergunta"}
                 confirmacaoDelete={"Tem certeza que você deseja excluir esta pergunta?"}
                 atualizarQuantidadePerguntas={atualizarQuantidadePerguntas}
+                comando={'excluir'}
             />
         </div>
         }

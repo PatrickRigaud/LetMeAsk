@@ -2,15 +2,19 @@ import '../../styles/styleSala.css';
 import React, { useState } from 'react';
 import {Perguntas} from './PerguntasCaixas';
 import {qtdPerguntasIcon}  from './qtdPerguntas';
-import { listaPerguntas } from '../../bancoPerguntas/bancoPerguntas';
+import { listaPerguntas } from '../../bancoGeral/bancoPerguntas';
 import sem_perguntas_img from '../../assets/sem_perguntas.svg'
 
-export default function Sala({nomeSala, textoPergunta, nomeUsuario}){
+export default function Sala({nomeSala, idSala, textoPergunta, nomeUsuario}){
 
-    let [lista, setLista] = useState(listaPerguntas);
+    const listaIdSala = listaPerguntas.filter(elemento => {
+        return elemento.idSala == idSala
+    })
+
+    let [lista, setLista] = useState(listaIdSala);
     
     const [quantidadePerguntas, setQuantidadePerguntas] = useState(
-        listaPerguntas.length
+        lista.length
       );
 
       const atualizarQuantidadePerguntas = (quantidade) => {

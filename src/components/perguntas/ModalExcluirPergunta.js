@@ -3,7 +3,7 @@ import excluir from '../../assets/excluir_vermelho.svg'
 
 
 
-export function ExcluirPergunta({isOpen, setModalOpen, id, setLista, lista, encerrarItem, confirmacaoDelete, atualizarQuantidadePerguntas, link}) {
+export function ExcluirPergunta({isOpen, setModalOpen, id, setLista, lista, encerrarItem, confirmacaoDelete, atualizarQuantidadePerguntas, link, url, comando}) {
     
     const excluirItem = () => {
         const listaNova = lista.filter(elemento => {
@@ -28,8 +28,14 @@ export function ExcluirPergunta({isOpen, setModalOpen, id, setLista, lista, ence
                     <div className="botoes">
                         <button className="btnCancelar" onClick={setModalOpen}>Cancelar</button>
                         <button className="btnConfirmarExclusao" onClick={() => {
-                            setLista(excluirItem())
-                        }}>Sim, excluir</button>
+                            if(link){
+                                return link(url)
+                            } else{
+                                 setLista(excluirItem())   
+                            }
+                            
+                            
+                        }}>{`Sim, ${comando}`}</button>
                     </div>
                 </main>
             </div>

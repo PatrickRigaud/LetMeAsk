@@ -6,6 +6,6 @@ import { Header } from "../components/Header";
 export function TelaScreen(){
     return (<>
         <Header/>
-        <TelaSala nomeSala="Descarga/Defesa" />
+        <TelaSala nomeSala="Descarga/Defesa" idSala={1}/>
     </>)
 }

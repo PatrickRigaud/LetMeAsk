@@ -2,18 +2,24 @@ import '../styles/styleHeader.css'
 import logo from '../assets/logo_header.svg'
 import { ExcluirPergunta } from './perguntas/ModalExcluirPergunta'
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 
 
 export function Header() {
     const [openModal, setModal] = useState(false);
 
+    function executarRedirecionamento(url) {
+        window.location.href = url;
+      }
 
     return <>
         <header className="cabecalho">
             
             <div className="logo-full">
-                <img className="letme" src={logo} alt="letme"/>
+                <Link to="/">
+                    <img className="letme" src={logo} alt="letme"/>
+                </Link>
             </div>
             
         <div className="caixas">
@@ -32,7 +38,9 @@ export function Header() {
                     setModalOpen={() => setModal(!openModal)}
                     encerrarItem={"Fechar sala"}
                     confirmacaoDelete={"Tem certeza que você deseja fechar esta sala?"}
-                    
+                    link={executarRedirecionamento}
+                    url={'/grupoSalas'}
+                    comando={'fechar'}
             />
             </div>
         </header>
