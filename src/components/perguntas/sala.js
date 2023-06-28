@@ -8,7 +8,7 @@ import sem_perguntas_img from '../../assets/sem_perguntas.svg'
 export default function Sala({nomeSala, idSala}){
 
     const listaIdSala = listaPerguntas.filter(elemento => {
-        return elemento.idSala === idSala
+        return elemento.idSala == idSala
     })
 
     let [lista, setLista] = useState(listaIdSala);
@@ -22,7 +22,7 @@ export default function Sala({nomeSala, idSala}){
       };
     
     const verificarPerguntas = () => {
-        if(lista.length === 0){
+        if(lista.length == 0){
             return <div className="centralSemPerguntas">
                     <img  className="semPerguntas" src={sem_perguntas_img} alt="sem perguntas"></img>
                     <h2>Nenhuma pergunta por aqui...</h2>

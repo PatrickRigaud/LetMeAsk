@@ -2,7 +2,7 @@ import { listaPerguntas } from "./bancoPerguntas"
 
 
 const listarPerguntasSala = (idSala) => {
-    const listaPerguntasId = listaPerguntas.filter(elemento => elemento.idSala === idSala)
+    const listaPerguntasId = listaPerguntas.filter(elemento => elemento.idSala == idSala)
 
     return listaPerguntasId
 }
