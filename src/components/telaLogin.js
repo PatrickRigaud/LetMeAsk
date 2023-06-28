@@ -3,14 +3,21 @@ import login from '../assets/login.svg'
 import '../styles/styleTelaLogin.css'
 import logo from '../assets/logo_full.svg'
 import { Link } from 'react-router-dom'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { listaSalas } from '../bancoGeral/bancoSalas'
+import styled from "styled-components"
 
-
+const P = styled.p`
+margin: 0;
+color: rgba(255, 0, 0, 0.685);
+display: ${props => props.visivel ? 'block' : 'none'};
+`
 
 export function TelaLogin(){
 
     let inputCodigoSala = useRef(null)
+    const [visivel, setVisivel] = useState(false)
+
 
     const pesquisar = (e) => {
         const achou = listaSalas.find(elemento => elemento.idSala == inputCodigoSala.current.value)
@@ -19,9 +26,18 @@ export function TelaLogin(){
             localStorage.setItem('nomeSala', `${achou.nome}`)
         }else{
             e.preventDefault()
-            alert('Não há sala com esse código')
+            setVisivel(true)
         }
     }
+
+   
+    
+    function SalaNaoEncontrada(){
+        return (<>
+            <P className="salaNaoEncontrada" visivel={visivel}>Sala não encontrada!</P>
+        </>)
+    }
+
     
 
     return (<>
@@ -42,6 +58,8 @@ export function TelaLogin(){
                 <form className='opcoes'>
                     <h2 className="textoLogin">-- Entre em uma sala --</h2>
                     <input placeholder='Digite o código da sala' ref={inputCodigoSala} className='inp_codigo_sala'/>
+                    
+                    <SalaNaoEncontrada/>
                     
                     <Link to={`/sala`}>
                         <button type="button" className="btn_entrar" onClick={(e)=> {
