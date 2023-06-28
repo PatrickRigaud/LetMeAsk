@@ -12,7 +12,16 @@ export function TelaLogin(){
 
     let inputCodigoSala = useRef(null)
 
- 
+    const pesquisar = (e) => {
+        const achou = listaSalas.find(elemento => elemento.idSala == inputCodigoSala.current.value)
+        if(achou){
+            localStorage.setItem('id', `${achou.idSala}`)
+            localStorage.setItem('nomeSala', `${achou.nome}`)
+        }else{
+            e.preventDefault()
+            alert('Não há sala com esse código')
+        }
+    }
     
 
     return (<>
@@ -36,14 +45,7 @@ export function TelaLogin(){
                     
                     <Link to={`/sala`}>
                         <button type="button" className="btn_entrar" onClick={(e)=> {
-                            const achou = listaSalas.find(elemento => elemento.idSala == inputCodigoSala.current.value)
-                            if(achou){
-                                localStorage.setItem('id', `${achou.idSala}`)
-                                localStorage.setItem('nomeSala', `${achou.nome}`)
-                            }else{
-                                e.preventDefault()
-                                alert('Não há sala com esse código')
-                            }
+                            pesquisar(e)
                             }}> <img src={login} alt="imagem descrição" className='iconLogin' />Entrar na sala</button>
                     
                     </Link>
