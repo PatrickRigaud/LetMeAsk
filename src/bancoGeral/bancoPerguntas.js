@@ -10,8 +10,9 @@ export const listaPerguntas = [
         mensagem: 'Existe um motivo para nem todos os clientes terem acesso ao relatório de numero jogados?',
         usuario: 'Alexandre Dante'},
     {id:3,
-        idSala: 1,
-        mensagem: 'A defesa é compatibilizada??',
+        idSala: 2,
+        mensagem: 'A coleta é importante??',
         usuario: 'Murilo Carioca Silva'}
  
 ]
+

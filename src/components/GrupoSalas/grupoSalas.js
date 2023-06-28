@@ -7,16 +7,20 @@ import login from '../../assets/login.svg'
 import "../../styles/styleGrupoSalas.css"
 
 
+
 export function GrupoSalas(){
 
     let [listaSalaNovo, setListaSala] = useState(listaSalas);
+    
 
     const mapearPerguntas = listaSalaNovo.map((sala) => {
         return (<>
             <CaixaSala 
+            key={sala.idSala}
             nomeSala={sala.nome}
             quantidadePerguntasSala={sala.perguntas}
-            id={sala.idSala}/>
+            id={sala.idSala}
+            />
         </>)
     
     })

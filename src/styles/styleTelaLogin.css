@@ -52,6 +52,7 @@
     line-height: 19px;
     color: white;
     margin-top: 16px;
+    text-decoration: none;
 }
 
 .btn_entrar:hover {

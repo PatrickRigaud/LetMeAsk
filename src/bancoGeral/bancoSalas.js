@@ -2,19 +2,10 @@ import { listaPerguntas } from "./bancoPerguntas"
 
 
 const listarPerguntasSala = (idSala) => {
-    const listaPerguntasId = listaPerguntas.filter(elemento => elemento.idSala == idSala)
+    const listaPerguntasId = listaPerguntas.filter(elemento => elemento.idSala === idSala)
 
     return listaPerguntasId
 }
-
-// export const listaSalas = [
-//     {idSala: 1,
-//         nome: 'Descarga/Defesa',
-//         perguntas: listarPerguntasSala()},
-//     {idSala: 2,
-//         nome: 'Coleta',
-//         perguntas: []}
-// ]
 
 
 export const listaSalas = [
