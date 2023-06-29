@@ -10,11 +10,14 @@ const listarPerguntasSala = (idSala) => {
 
 export const listaSalas = [
     {idSala: 1,
-        nome: 'Descarga/Defesa'},
+        nome: 'Javascript'},
         
     {idSala: 2,
-        nome: 'Coleta'}
-    
+        nome: 'React'},
+
+    {idSala: 3,
+        nome: 'PostgreSQL'},
+
 ]
 
 listaSalas.forEach(sala => {

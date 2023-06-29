@@ -27,6 +27,7 @@ export function TelaLogin(){
         }else{
             e.preventDefault()
             setVisivel(true)
+            inputCodigoSala.current.value = ''
         }
     }
 
