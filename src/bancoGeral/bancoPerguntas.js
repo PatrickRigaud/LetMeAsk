@@ -38,6 +38,5 @@ export const listaPerguntas = [
         mensagem: 'Como você pode implementar uma função personalizada no PostgreSQL usando a linguagem de programação PL/pgSQL para calcular a soma de todos os números primos em uma tabela?',
         usuario: 'Murilo Carioca Silva'},
     
- 
 ]
 

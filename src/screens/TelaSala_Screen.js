@@ -1,15 +1,15 @@
-import TelaSala from "../components/perguntas/sala"
+import Sala from "../components/sala";
 import { Header } from "../components/Header";
 import React from 'react';
 
 
-export function TelaScreen(){
+export function TelaSala_Screen(){
 
     let telaEscolhida = localStorage.getItem('id')
     let nomeTelaEscolhida = localStorage.getItem('nomeSala')
     
     return (<>
         <Header/>
-        <TelaSala nomeSala={nomeTelaEscolhida} idSala={telaEscolhida}/>
+        <Sala nomeSala={nomeTelaEscolhida} idSala={telaEscolhida}/>
     </>)
 }

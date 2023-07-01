@@ -2,7 +2,7 @@ import { TelaLogin } from "../components/telaLogin";
 
 
 
-export function TelaLoginScreen(){
+export function TelaLogin_Screen(){
     return (<>
         <TelaLogin/>
     </>)

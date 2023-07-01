@@ -1,11 +1,11 @@
-import '../../styles/styleSala.css';
+import '../styles/styleSala.css';
 import React, { useState } from 'react';
-import {Perguntas} from './PerguntasCaixas';
-import {qtdPerguntasIcon}  from './qtdPerguntas';
-import { listaPerguntas } from '../../bancoGeral/bancoPerguntas';
-import sem_perguntas_img from '../../assets/sem_perguntas.svg'
+import {ConteinerPergunta} from './perguntas/ConteinerPergunta';
+import {qtdPerguntasIcon}  from './perguntas/qtdPerguntasIcon';
+import { listaPerguntas } from '../bancoGeral/bancoPerguntas';
+import sem_perguntas_img from '../assets/sem_perguntas.svg'
 
-export default function Sala({nomeSala, idSala}){
+function Sala({nomeSala, idSala}){
 
     const listaIdSala = listaPerguntas.filter(elemento => {
         return elemento.idSala == idSala
@@ -39,7 +39,7 @@ export default function Sala({nomeSala, idSala}){
     
 
     const mapearPerguntas = lista.map((perguntaUser) => {
-        return <Perguntas
+        return <ConteinerPergunta
       key={perguntaUser.id}
       textoPergunta={perguntaUser.mensagem}
       nomeUsuario={perguntaUser.usuario}
@@ -71,3 +71,4 @@ export default function Sala({nomeSala, idSala}){
 }
 
 
+export default Sala;

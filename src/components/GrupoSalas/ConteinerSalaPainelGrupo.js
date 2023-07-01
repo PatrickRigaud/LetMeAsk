@@ -2,7 +2,7 @@ import "../../styles/styleGrupoSalas.css"
 import { Link } from 'react-router-dom'
 
 
-export function CaixaSala({nomeSala, quantidadePerguntasSala, id}){
+export function ConteinerSalaPainelGrupo({nomeSala, quantidadePerguntasSala, id}){
     
 
     return (<>

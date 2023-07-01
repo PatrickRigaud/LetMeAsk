@@ -53,7 +53,7 @@ export function TelaLogin(){
                     <img className="logo" src={logo} alt="logo"/>
           
                 </div>
-                <Link to="/grupoSalas">
+                <Link to="/painelGrupoSalas">
                     <button className="btn_todas_salas">Buscar todas as salas</button>
                 </Link>
                 <form className='opcoes'>

@@ -1,5 +1,5 @@
 import { listaSalas } from "../../bancoGeral/bancoSalas"
-import { CaixaSala } from "./caixaSala";
+import { ConteinerSalaPainelGrupo } from "./ConteinerSalaPainelGrupo";
 import imagemLogin from '../../assets/tela_login_imagem.svg'
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom'
@@ -8,14 +8,14 @@ import "../../styles/styleGrupoSalas.css"
 
 
 
-export function GrupoSalas(){
+export function PainelGrupoSalas(){
 
     let [listaSalaNovo, setListaSala] = useState(listaSalas);
     
 
     const mapearPerguntas = listaSalaNovo.map((sala) => {
         return (<>
-            <CaixaSala 
+            <ConteinerSalaPainelGrupo 
             key={sala.idSala}
             nomeSala={sala.nome}
             quantidadePerguntasSala={sala.perguntas}

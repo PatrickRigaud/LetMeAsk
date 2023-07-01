@@ -39,7 +39,7 @@ export function Header() {
                     encerrarItem={"Fechar sala"}
                     confirmacaoDelete={"Tem certeza que você deseja fechar esta sala?"}
                     link={executarRedirecionamento}
-                    url={'/grupoSalas'}
+                    url={'/painelGrupoSalas'}
                     comando={'fechar'}
             />
             </div>
