@@ -1,17 +1,20 @@
 import { listaSalas } from "../../bancoGeral/bancoSalas"
 import { ConteinerSalaPainelGrupo } from "./ConteinerSalaPainelGrupo";
 import imagemLogin from '../../assets/tela_login_imagem.svg'
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom'
 import login from '../../assets/login.svg'
 import "../../styles/styleGrupoSalas.css"
+import { nomeSalaContext, iDSalaContext } from "../../context/context";
 
 
 
 export function PainelGrupoSalas(){
 
-    let [listaSalaNovo, setListaSala] = useState(listaSalas);
-
+    let [listaSalaNovo, setListaSala] = useState([]);
+    
+    const setNome = useContext(nomeSalaContext);
+    const setId = useContext(iDSalaContext);
 
     useEffect(() => {
         async function fetchListaSalas() {
@@ -33,21 +36,23 @@ export function PainelGrupoSalas(){
     
     
 
-    const mapearPerguntas = listaSalaNovo.map((sala) => (
-        <ConteinerSalaPainelGrupo 
+    const mapearPerguntas = listaSalaNovo.map((sala) =>(<ConteinerSalaPainelGrupo 
+            id={sala.id}
             nomeSala={sala.nome}
             // quantidadePerguntasSala={sala.perguntas}
-            id={sala.id}
-        />
-    ));
+            key={sala.id}
+        />)
+) 
+    
+        
 
     let inputCodigoSala = useRef(null)
 
     const pesquisar = (e) => {
         const achou = listaSalas.find(elemento => elemento.idSala == inputCodigoSala.current.value)
         if(achou){
-            localStorage.setItem('id', `${achou.idSala}`)
-            localStorage.setItem('nomeSala', `${achou.nome}`)
+            setNome(achou.nome)
+            setId(achou.idSala)
         }else{
             e.preventDefault()
             alert('Não há sala com esse código')
@@ -72,7 +77,7 @@ export function PainelGrupoSalas(){
                     <h2 className="tituloSalaGS">Todas as salas</h2>
                 </div>
                 <main className="centroPrincipalGS">
-                {listaSalaNovo.length > 0 ? mapearPerguntas : <p>Carregando...</p>}
+                {mapearPerguntas}
 
                 </main>
             </div>

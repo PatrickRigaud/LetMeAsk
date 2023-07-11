@@ -3,9 +3,11 @@ import login from '../assets/login.svg'
 import '../styles/styleTelaLogin.css'
 import logo from '../assets/logo_full.svg'
 import { Link } from 'react-router-dom'
-import { useRef, useState } from 'react'
+import React, { useRef, useState, useContext } from 'react'
 import { listaSalas } from '../bancoGeral/bancoSalas'
 import styled from "styled-components"
+import { nomeSalaContext, iDSalaContext } from '../context/context.js';
+
 
 const P = styled.p`
 margin: 0;
@@ -16,17 +18,20 @@ display: ${props => props.visivel ? 'block' : 'none'};
 export function TelaLogin(){
 
     let inputCodigoSala = useRef(null)
-    const [visivel, setVisivel] = useState(false)
+    const [visivel, setVisivel] = useState('')
+
+    const setNome = useContext(nomeSalaContext);
+    const setId = useContext(iDSalaContext);
 
 
     const pesquisar = (e) => {
         const achou = listaSalas.find(elemento => elemento.idSala == inputCodigoSala.current.value)
         if(achou){
-            localStorage.setItem('id', `${achou.idSala}`)
-            localStorage.setItem('nomeSala', `${achou.nome}`)
+            setNome(achou.nome)
+            setId(achou.idSala)
         }else{
             e.preventDefault()
-            setVisivel(true)
+            setVisivel('block')
             inputCodigoSala.current.value = ''
         }
     }
