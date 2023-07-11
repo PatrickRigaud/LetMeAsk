@@ -1,7 +1,7 @@
 import { listaSalas } from "../../bancoGeral/bancoSalas"
 import { ConteinerSalaPainelGrupo } from "./ConteinerSalaPainelGrupo";
 import imagemLogin from '../../assets/tela_login_imagem.svg'
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import login from '../../assets/login.svg'
 import "../../styles/styleGrupoSalas.css"
@@ -11,19 +11,35 @@ import "../../styles/styleGrupoSalas.css"
 export function PainelGrupoSalas(){
 
     let [listaSalaNovo, setListaSala] = useState(listaSalas);
+
+
+    useEffect(() => {
+        async function fetchListaSalas() {
+            try {
+                const response = await fetch('http://localhost:4000/salas');
+                if (!response.ok) {
+                    throw new Error('Erro na requisição: ' + response.status);
+                }
+                const data = await response.json();
+                setListaSala(data);
+                
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    
+        fetchListaSalas();
+    }, []);
+    
     
 
-    const mapearPerguntas = listaSalaNovo.map((sala) => {
-        return (<>
-            <ConteinerSalaPainelGrupo 
-            key={sala.idSala}
+    const mapearPerguntas = listaSalaNovo.map((sala) => (
+        <ConteinerSalaPainelGrupo 
             nomeSala={sala.nome}
-            quantidadePerguntasSala={sala.perguntas}
-            id={sala.idSala}
-            />
-        </>)
-    
-    })
+            // quantidadePerguntasSala={sala.perguntas}
+            id={sala.id}
+        />
+    ));
 
     let inputCodigoSala = useRef(null)
 
@@ -56,7 +72,7 @@ export function PainelGrupoSalas(){
                     <h2 className="tituloSalaGS">Todas as salas</h2>
                 </div>
                 <main className="centroPrincipalGS">
-                {mapearPerguntas}
+                {listaSalaNovo.length > 0 ? mapearPerguntas : <p>Carregando...</p>}
 
                 </main>
             </div>

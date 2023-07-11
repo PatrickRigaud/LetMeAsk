@@ -2,9 +2,7 @@ import "../../styles/styleGrupoSalas.css"
 import { Link } from 'react-router-dom'
 
 
-export function ConteinerSalaPainelGrupo({nomeSala, quantidadePerguntasSala, id}){
-    
-
+export function ConteinerSalaPainelGrupo({nomeSala, id}){
     return (<>
         <Link to={`/sala`} className="link" onClick={()=>{
             localStorage.setItem('id', `${id}`)
@@ -12,7 +10,7 @@ export function ConteinerSalaPainelGrupo({nomeSala, quantidadePerguntasSala, id}
         }}>
             <div className="blocoSala">
                 <h3 className="nomeSala">{`${nomeSala} - ID: ${id}`}</h3>
-                <div className="quantidadePerguntasSala">{`${quantidadePerguntasSala.length} perguntas`}</div>
+                {/* <div className="quantidadePerguntasSala">{`${quantidadePerguntasSala.length} perguntas`}</div> */}
             </div>
         </Link>
     </>)
