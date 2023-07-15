@@ -4,7 +4,7 @@ import '../../styles/styleSala.css'
 import {ExcluirPergunta} from './ModalExcluirPergunta';
 
 
-export function ConteinerPergunta({textoPergunta, nomeUsuario, id, setLista, lista, atualizarQuantidadePerguntas}){
+export function ConteinerPergunta({textoPergunta, nomeUsuario, id, setLista, lista, atualizarQuantidadePerguntas, idSala}){
 
     const [openModal, setModal] = useState(false);
 
@@ -34,6 +34,7 @@ export function ConteinerPergunta({textoPergunta, nomeUsuario, id, setLista, lis
                 confirmacaoDelete={"Tem certeza que você deseja excluir esta pergunta?"}
                 atualizarQuantidadePerguntas={atualizarQuantidadePerguntas}
                 comando={'excluir'}
+                idSala={idSala}
             />
         </div>
         }

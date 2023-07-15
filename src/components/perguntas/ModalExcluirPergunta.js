@@ -3,8 +3,7 @@ import excluir from '../../assets/excluir_vermelho.svg'
 
 
 
-export function ExcluirPergunta({isOpen, setModalOpen, id, setLista, lista, encerrarItem, confirmacaoDelete, atualizarQuantidadePerguntas, link, url, comando}) {
-    
+export function ExcluirPergunta({isOpen, setModalOpen, id, setLista, lista, encerrarItem, confirmacaoDelete, atualizarQuantidadePerguntas, link, url, comando, idSala}) {
     const excluirItem = () => {
         const listaNova = lista.filter(elemento => {
             return id != elemento.id
@@ -15,6 +14,26 @@ export function ExcluirPergunta({isOpen, setModalOpen, id, setLista, lista, ence
         atualizarQuantidadePerguntas(listaNova.length)
         return listaNova
     }
+
+
+async function fetchDeletarPergunta(){
+  await fetch('http://localhost:4000/ask', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ 
+      id_sala: idSala,
+      id: id}),
+  }).then(response => response.json()) 
+    .then(data => {
+      console.log(data)
+    })
+    .catch(error => {
+      console.error('Erro:', error);
+    });
+}
+
 
 
     if(isOpen){
@@ -31,7 +50,8 @@ export function ExcluirPergunta({isOpen, setModalOpen, id, setLista, lista, ence
                             if(link){
                                 return link(url)
                             } else{
-                                 setLista(excluirItem())   
+                                 setLista(excluirItem())
+                                 fetchDeletarPergunta()  
                             }
                             
                             

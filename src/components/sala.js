@@ -1,11 +1,12 @@
 import '../styles/styleSala.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {ConteinerPergunta} from './perguntas/ConteinerPergunta';
 import {qtdPerguntasIcon}  from './perguntas/qtdPerguntasIcon';
-import sem_perguntas_img from '../assets/sem_perguntas.svg'
+import sem_perguntas_img from '../assets/sem_perguntas.svg';
 
 function Sala({nomeSala, idSala}){
 
+    let mensagemEnviarPergunta;
     let [listaPerguntas, setlistaPerguntas] = useState([]);
     const [quantidadePerguntas, setQuantidadePerguntas] = useState(0);
 
@@ -29,13 +30,34 @@ function Sala({nomeSala, idSala}){
 
 fetchlistaPerguntas();
 
-}, [idSala])
+}, [listaPerguntas ,idSala])
 
 
 
+async function fetchEnviarPergunta(){
+  await fetch('http://localhost:4000/ask', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ 
+      id_sala: idSala,
+      usuario: 'Mock User',
+      descricao: mensagemEnviarPergunta}),
+  }).then(response => response.json()) 
+    .then(data => {
+      console.log(data)
+    })
+    .catch(error => {
+      console.error('Erro:', error);
+    });
+}
 
 
-    
+
+const textAreaEnviarPergunta = useRef(null);
+
+  
 
       const atualizarQuantidadePerguntas = (quantidade) => {
         setQuantidadePerguntas(quantidade);
@@ -66,6 +88,7 @@ fetchlistaPerguntas();
       setLista={setlistaPerguntas}
       lista={listaPerguntas}
       atualizarQuantidadePerguntas={atualizarQuantidadePerguntas}
+      idSala={idSala}
       key={perguntaUser.id}
     />
     })
@@ -75,14 +98,28 @@ fetchlistaPerguntas();
         <>
         
         <div className="center">
-            <div className="caixasTitulo">
-                <h2 className="tituloSala">{nomeSala}</h2>
-                <div className="quantidadePerguntas">{qtdPerguntasIcon(quantidadePerguntas, quantidadePerguntas)}</div>
+            <div className='salaHeader'>
+                <div className="caixasTitulo">
+                    <h2 className="tituloSala">{nomeSala}</h2>
+                    <div className="quantidadePerguntas">{qtdPerguntasIcon(quantidadePerguntas, quantidadePerguntas)}</div>
+                </div>
+                <div>
+                    <textarea className='fazerPergunta' placeholder='Digite sua pergunta aqui...' ref={textAreaEnviarPergunta}/>
+                  <div className='footerPergunta'>
+                    <p className='textoLogin'>Para enviar uma pergunta, <a href='www.google.com'>faça login.</a></p>
+                    <button className='btnCriarPergunta' onClick={()=> {
+                      mensagemEnviarPergunta = textAreaEnviarPergunta.current.value;
+                      fetchEnviarPergunta();
+                      textAreaEnviarPergunta.current.value = '';
+                    }}>Enviar Pergunta</button>
+                  </div>
+                
+                </div>
+                
             </div>
             <main className="centroPrincipal">
             
             {verificarPerguntas()}
-            
             </main>
         </div>
         </>

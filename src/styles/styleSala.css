@@ -143,6 +143,7 @@ footer {
     background-image: url("../assets/checkmark-circle-1.svg");
     height: 24px;
     width: 24px;
+    cursor: pointer;
 }
 
 .check:hover {
@@ -153,6 +154,7 @@ footer {
     background-image: url("../assets/Excluir.svg");
     height: 24px;
     width: 24px;
+    cursor: pointer;
 }
 
 .excluir:hover {
@@ -163,8 +165,58 @@ footer {
     background-image: url("../assets/Messages.svg");
     height: 24px;
     width: 24px;
+    cursor: pointer;
 }
 
 .messages:hover {
     background-image: url("../assets/Messages_hover.svg");
+}
+
+.btnCriarPergunta {
+    width: 140px;
+    height: 40px;
+    background: #835AFD;
+    border: 1px solid #A8A8B3;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btnCriarPergunta:hover {
+    background-color: #6F4BD8;
+}
+
+.fazerPergunta {
+    width: 100%;
+    background-color: white;
+    height: 152px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
+    border: none;
+    padding: 10px;
+}
+
+.footerPergunta {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.textoLogin {
+    color: gray;
+    font-size: small;
 }
