@@ -5,15 +5,11 @@ import logo from '../assets/logo_full.svg'
 import { Link } from 'react-router-dom'
 import React, { useRef, useState, useContext } from 'react'
 import { listaSalas } from '../bancoGeral/bancoSalas'
-import styled from "styled-components"
+import { SalaNaoEncontrada } from './SalaNaoEncontradaMsg'
 import { nomeSalaContext, iDSalaContext } from '../context/context.js';
 
 
-const P = styled.p`
-margin: 0;
-color: rgba(255, 0, 0, 0.685);
-display: ${props => props.visivel ? 'block' : 'none'};
-`
+
 
 export function TelaLogin(){
 
@@ -34,14 +30,6 @@ export function TelaLogin(){
             setVisivel('block')
             inputCodigoSala.current.value = ''
         }
-    }
-
-   
-    
-    function SalaNaoEncontrada(){
-        return (<>
-            <P className="salaNaoEncontrada" visivel={visivel}>Sala não encontrada!</P>
-        </>)
     }
 
     
@@ -65,7 +53,7 @@ export function TelaLogin(){
                     <h2 className="textoLogin">-- Entre em uma sala --</h2>
                     <input placeholder='Digite o código da sala' ref={inputCodigoSala} className='inp_codigo_sala'/>
                     
-                    <SalaNaoEncontrada/>
+                    <SalaNaoEncontrada visivel={visivel}/>
                     
                     <Link to={`/sala`}>
                         <button type="button" className="btn_entrar" onClick={(e)=> {

@@ -6,15 +6,18 @@ import { Link } from 'react-router-dom'
 import login from '../../assets/login.svg'
 import "../../styles/styleGrupoSalas.css"
 import { nomeSalaContext, iDSalaContext } from "../../context/context";
+import { SalaNaoEncontrada } from "../SalaNaoEncontradaMsg";
 
 
 
 export function PainelGrupoSalas(){
 
     let [listaSalaNovo, setListaSala] = useState([]);
+    const [visivel, setVisivel] = useState('')
     
     const setNome = useContext(nomeSalaContext);
     const setId = useContext(iDSalaContext);
+
 
     useEffect(() => {
         async function fetchListaSalas() {
@@ -45,7 +48,6 @@ export function PainelGrupoSalas(){
 ) 
     
         
-
     let inputCodigoSala = useRef(null)
 
     const pesquisar = (e) => {
@@ -55,7 +57,8 @@ export function PainelGrupoSalas(){
             setId(achou.idSala)
         }else{
             e.preventDefault()
-            alert('Não há sala com esse código')
+            setVisivel('block')
+            inputCodigoSala.current.value = ''
         }
     }
 
@@ -69,6 +72,8 @@ export function PainelGrupoSalas(){
                 <h2 className="textoLogin">-- Entre em uma sala --</h2>
                     <input placeholder='Digite o código da sala' ref={inputCodigoSala} className='inp_codigo_sala'/>
                     
+                    <SalaNaoEncontrada visivel={visivel}/>
+
                     <Link to="/sala">
                         <button type="button" className="btn_entrar" onClick={(e)=> {
                             pesquisar(e)
