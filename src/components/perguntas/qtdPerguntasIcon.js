@@ -1,12 +1,10 @@
-import {listaPerguntas} from '../../bancoGeral/bancoPerguntas'
 
-
-export const qtdPerguntasIcon = (quantidadePerguntas) => {
+export const qtdPerguntasIcon = (quantidadePerguntas, listaPerguntasLenght) => {
 
 
     let temPergunta = ''
 
-    if(listaPerguntas.length > 0){
+    if(listaPerguntasLenght > 0){
         temPergunta = <span>{`${quantidadePerguntas} perguntas`}</span>
     } else{
         temPergunta = 'Sem perguntas'

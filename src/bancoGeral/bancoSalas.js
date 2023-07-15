@@ -1,25 +1,27 @@
-import { listaPerguntas } from "./bancoPerguntas"
+//Mock nao mais utilizado
+
+// import { listaPerguntas } from "./bancoPerguntas"
 
 
-const listarPerguntasSala = (idSala) => {
-    const listaPerguntasId = listaPerguntas.filter(elemento => elemento.idSala == idSala)
+// const listarPerguntasSala = (idSala) => {
+//     const listaPerguntasId = listaPerguntas.filter(elemento => elemento.idSala == idSala)
 
-    return listaPerguntasId
-}
+//     return listaPerguntasId
+// }
 
 
-export const listaSalas = [
-    {idSala: 1,
-        nome: 'Javascript'},
+// export const listaSalas = [
+//     {idSala: 1,
+//         nome: 'Javascript'},
         
-    {idSala: 2,
-        nome: 'React'},
+//     {idSala: 2,
+//         nome: 'React'},
 
-    {idSala: 3,
-        nome: 'PostgreSQL'},
+//     {idSala: 3,
+//         nome: 'PostgreSQL'},
 
-]
+// ]
 
-listaSalas.forEach(sala => {
-    sala.perguntas = listarPerguntasSala(sala.idSala)
-})
+// listaSalas.forEach(sala => {
+//     sala.perguntas = listarPerguntasSala(sala.idSala)
+// })

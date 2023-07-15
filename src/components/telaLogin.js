@@ -3,8 +3,7 @@ import login from '../assets/login.svg'
 import '../styles/styleTelaLogin.css'
 import logo from '../assets/logo_full.svg'
 import { Link } from 'react-router-dom'
-import React, { useRef, useState, useContext } from 'react'
-import { listaSalas } from '../bancoGeral/bancoSalas'
+import React, { useRef, useState, useContext, useEffect } from 'react'
 import { SalaNaoEncontrada } from './SalaNaoEncontradaMsg'
 import { nomeSalaContext, iDSalaContext } from '../context/context.js';
 
@@ -19,12 +18,33 @@ export function TelaLogin(){
     const setNome = useContext(nomeSalaContext);
     const setId = useContext(iDSalaContext);
 
+   let [listaSalaNovo, setListaSala] = useState([]);
+    
+    useEffect(() => {
+        async function fetchListaSalas() {
+            try {
+                const response = await fetch('http://localhost:4000/salas');
+                if (!response.ok) {
+                    throw new Error('Erro na requisição: ' + response.status);
+                }
+                const data = await response.json();
+                setListaSala(data);
+                
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    
+        fetchListaSalas();
+    }, []);
+    
+
 
     const pesquisar = (e) => {
-        const achou = listaSalas.find(elemento => elemento.idSala == inputCodigoSala.current.value)
+        const achou = listaSalaNovo.find(elemento => elemento.id == inputCodigoSala.current.value)
         if(achou){
             setNome(achou.nome)
-            setId(achou.idSala)
+            setId(achou.id)
         }else{
             e.preventDefault()
             setVisivel('block')

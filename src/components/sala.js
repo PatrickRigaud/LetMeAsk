@@ -1,28 +1,48 @@
 import '../styles/styleSala.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {ConteinerPergunta} from './perguntas/ConteinerPergunta';
 import {qtdPerguntasIcon}  from './perguntas/qtdPerguntasIcon';
-import { listaPerguntas } from '../bancoGeral/bancoPerguntas';
 import sem_perguntas_img from '../assets/sem_perguntas.svg'
 
 function Sala({nomeSala, idSala}){
 
-    const listaIdSala = listaPerguntas.filter(elemento => {
-        return elemento.idSala == idSala
-    })
+    let [listaPerguntas, setlistaPerguntas] = useState([]);
+    const [quantidadePerguntas, setQuantidadePerguntas] = useState(0);
 
-    let [lista, setLista] = useState(listaIdSala);
+    useEffect(() => {
+  async function fetchlistaPerguntas() {
+    await fetch('http://localhost:4000/askFilterID', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ data: idSala}),
+}).then(response => response.json()) 
+  .then(data => {
+    setlistaPerguntas(data)
+    setQuantidadePerguntas(data.length)
+  })
+  .catch(error => {
+    console.error('Erro:', error);
+  });
+}
+
+fetchlistaPerguntas();
+
+}, [idSala])
+
+
+
+
+
     
-    const [quantidadePerguntas, setQuantidadePerguntas] = useState(
-        lista.length
-      );
 
       const atualizarQuantidadePerguntas = (quantidade) => {
         setQuantidadePerguntas(quantidade);
       };
     
     const verificarPerguntas = () => {
-        if(lista.length == 0){
+        if(listaPerguntas.length === 0){
             return <div className="centralSemPerguntas">
                     <img  className="semPerguntas" src={sem_perguntas_img} alt="sem perguntas"></img>
                     <h2>Nenhuma pergunta por aqui...</h2>
@@ -38,16 +58,15 @@ function Sala({nomeSala, idSala}){
   
     
 
-    const mapearPerguntas = lista.map((perguntaUser) => {
+    const mapearPerguntas = listaPerguntas.map((perguntaUser) => {
         return <ConteinerPergunta
-      key={perguntaUser.id}
-      textoPergunta={perguntaUser.mensagem}
+      textoPergunta={perguntaUser.descricao}
       nomeUsuario={perguntaUser.usuario}
       id={perguntaUser.id}
-      setLista={setLista}
-      lista={lista}
+      setLista={setlistaPerguntas}
+      lista={listaPerguntas}
       atualizarQuantidadePerguntas={atualizarQuantidadePerguntas}
-      
+      key={perguntaUser.id}
     />
     })
 
@@ -58,7 +77,7 @@ function Sala({nomeSala, idSala}){
         <div className="center">
             <div className="caixasTitulo">
                 <h2 className="tituloSala">{nomeSala}</h2>
-                <div className="quantidadePerguntas">{qtdPerguntasIcon(quantidadePerguntas)}</div>
+                <div className="quantidadePerguntas">{qtdPerguntasIcon(quantidadePerguntas, quantidadePerguntas)}</div>
             </div>
             <main className="centroPrincipal">
             

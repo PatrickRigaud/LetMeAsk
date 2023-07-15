@@ -1,4 +1,3 @@
-import { listaSalas } from "../../bancoGeral/bancoSalas"
 import { ConteinerSalaPainelGrupo } from "./ConteinerSalaPainelGrupo";
 import imagemLogin from '../../assets/tela_login_imagem.svg'
 import React, { useState, useRef, useEffect, useContext } from 'react';
@@ -38,7 +37,6 @@ export function PainelGrupoSalas(){
     }, []);
     
     
-
     const mapearPerguntas = listaSalaNovo.map((sala) =>(<ConteinerSalaPainelGrupo 
             id={sala.id}
             nomeSala={sala.nome}
@@ -51,10 +49,10 @@ export function PainelGrupoSalas(){
     let inputCodigoSala = useRef(null)
 
     const pesquisar = (e) => {
-        const achou = listaSalas.find(elemento => elemento.idSala == inputCodigoSala.current.value)
+        const achou = listaSalaNovo.find(elemento => elemento.id == inputCodigoSala.current.value)
         if(achou){
             setNome(achou.nome)
-            setId(achou.idSala)
+            setId(achou.id)
         }else{
             e.preventDefault()
             setVisivel('block')
