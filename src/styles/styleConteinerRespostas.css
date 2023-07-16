@@ -1,0 +1,29 @@
+.tituloPergunta {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 4 00;
+    font-size: 18px;
+    line-height: 36px;
+    color: black;
+}
+
+
+.Voltar {
+    padding: 0;
+    margin: 0;
+}
+
+.icon_voltar {
+    padding: 0;
+    margin: 0;
+    height: 100px;
+    margin-top: 50px;
+}
+
+.Separando_topo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}

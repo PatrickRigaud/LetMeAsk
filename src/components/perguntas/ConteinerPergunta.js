@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import icone_usuario from '../../assets/icone_usuario.svg'
 import '../../styles/styleSala.css'
 import {ExcluirPergunta} from './ModalExcluirPergunta';
+import { Link } from 'react-router-dom'
+import { iDPerguntaContext } from '../../context/context';
+
+
 
 
 export function ConteinerPergunta({textoPergunta, nomeUsuario, id, setLista, lista, atualizarQuantidadePerguntas, idSala}){
 
     const [openModal, setModal] = useState(false);
 
+    const setIdPergunta = useContext(iDPerguntaContext);
 
-        return <div className="pergunta"  key={id}>
+        return <div className="pergunta"  key={id} >
             <p className='textoPergunta'>{textoPergunta}</p>
             <footer>
                 <div className="usuario">
@@ -21,7 +26,11 @@ export function ConteinerPergunta({textoPergunta, nomeUsuario, id, setLista, lis
                     <div className="check"></div>
                     <div className="excluir" onClick={() =>
                         setModal(true)}/>
-                    <div className="messages"></div>
+
+                            <Link to={`/salaRespostas/${idSala}/${id}`}>
+                                <div className="messages" onClick={() => setIdPergunta(id)}></div>
+                            </Link>
+                      
                 </div>
             </footer>
             <ExcluirPergunta 
