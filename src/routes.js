@@ -5,6 +5,7 @@ import { PainelGrupoSalas_Screen } from './screens/PainelGrupoSalas_Screen'
 import { nomeSalaContext, iDSalaContext, iDPerguntaContext } from './context/context';
 import React, {useState} from 'react';
 import { TelaSalaResposta_Screen } from './screens/TelaSalaResposta_Screen';
+import {LoginSenha_Screen} from './screens/LoginSenha_Screen'
 
 export const Routess = () => {
     const [infoNome, setNome] = useState('')
@@ -17,6 +18,7 @@ export const Routess = () => {
         <nomeSalaContext.Provider value={setNome}>
         <iDPerguntaContext.Provider value={setIdPergunta}>
                 <Routes>
+                    <Route path='/login' element={<LoginSenha_Screen/>}/>
                     <Route path='/' element={<TelaLogin_Screen/>} />
                     <Route path='/sala' element={<TelaSala_Screen infoNome={infoNome} infoId={infoId}/>} />
                     <Route path='/painelGrupoSalas' element={<PainelGrupoSalas_Screen/>} />

@@ -6,6 +6,7 @@ import voltar_icon from '../../assets/voltar_icon.svg';
 import { Link } from 'react-router-dom'
 
 
+
 export function ConteinerRespostas ({infoNome, infoId, IdPergunta}) {
     let [perguntaTexto, setPerguntaTexto] = useState('')
     let [perguntaUsuario, setPerguntaUsuario] = useState('')
@@ -27,7 +28,7 @@ export function ConteinerRespostas ({infoNome, infoId, IdPergunta}) {
               });
           }
           fetchBuscarPergunta()
-    }, [])
+    }, [IdPergunta])
     
 
 
@@ -44,7 +45,7 @@ export function ConteinerRespostas ({infoNome, infoId, IdPergunta}) {
               });
           }
           fetchBuscarComentarios()
-      }, [listaComentarios])
+      }, [listaComentarios, IdPergunta])
 
 
       
@@ -122,9 +123,12 @@ export function ConteinerRespostas ({infoNome, infoId, IdPergunta}) {
           <div className='footerPergunta'>
             <p className='textoLogin'>Para enviar respostas, <a href='www.google.com'>faça login.</a></p>
             <button className='btnCriarPergunta' onClick={()=> {
+                if(textAreaEnviarComentario.current.value < 1){
+                    alert('Escreva algo')
+                }else{
               mensagemEnviarComentario = textAreaEnviarComentario.current.value;
               fetchEnviarComentario();
-              textAreaEnviarComentario.current.value = '';
+              textAreaEnviarComentario.current.value = '';}
             }}>Enviar Resposta</button>
           </div>
         

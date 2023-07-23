@@ -6,10 +6,12 @@ import sem_perguntas_img from '../assets/sem_perguntas.svg';
 
 function Sala({nomeSala, idSala}){
 
-    let mensagemEnviarPergunta;
+    let mensagemEnviarPergunta; // Declaração de variavel para alteração no fetch de gravar pergunta
     let [listaPerguntas, setlistaPerguntas] = useState([]);
     const [quantidadePerguntas, setQuantidadePerguntas] = useState(0);
+    const textAreaEnviarPergunta = useRef(null); // Referencia de input de texto que será enviado por fetch para gravar pergunta.
 
+    // Requisição para buscar listagem de perguntas e quantidade
     useEffect(() => {
   async function fetchlistaPerguntas() {
     await fetch('http://localhost:4000/askFilterID', {
@@ -30,11 +32,12 @@ function Sala({nomeSala, idSala}){
 
 fetchlistaPerguntas();
 
-}, [listaPerguntas ,idSala])
+}, [listaPerguntas ,idSala]) /*como segundo parâmetro do useEffect, passo a lista de perguntas e idSala,
+para que sempre que haja alguma alteração nessas variaveis, ele renderize uma vez.
+*/
 
 
-
-async function fetchEnviarPergunta(){
+async function fetchEnviarPergunta(){ // Requisição para gravar pergunta no banco
   await fetch('http://localhost:4000/ask', {
     method: 'POST',
     headers: {
@@ -42,7 +45,7 @@ async function fetchEnviarPergunta(){
     },
     body: JSON.stringify({ 
       id_sala: idSala,
-      usuario: 'Mock User',
+      usuario: 'Mock User', 
       descricao: mensagemEnviarPergunta}),
   }).then(response => response.json()) 
     .then(data => {
@@ -55,15 +58,11 @@ async function fetchEnviarPergunta(){
 
 
 
-const textAreaEnviarPergunta = useRef(null);
-
-  
-
       const atualizarQuantidadePerguntas = (quantidade) => {
         setQuantidadePerguntas(quantidade);
       };
     
-    const verificarPerguntas = () => {
+    const verificarPerguntas = () => { // Condicional para avaliar se há perguntas na sala, se não houver, ele exibe msg de não há perguntas, se houver, as renderiza.
         if(listaPerguntas.length === 0){
             return <div className="centralSemPerguntas">
                     <img  className="semPerguntas" src={sem_perguntas_img} alt="sem perguntas"></img>
@@ -80,7 +79,7 @@ const textAreaEnviarPergunta = useRef(null);
   
     
 
-    const mapearPerguntas = listaPerguntas.map((perguntaUser) => {
+    const mapearPerguntas = listaPerguntas.map((perguntaUser) => { 
         return <ConteinerPergunta
       textoPergunta={perguntaUser.descricao}
       nomeUsuario={perguntaUser.usuario}
@@ -108,9 +107,10 @@ const textAreaEnviarPergunta = useRef(null);
                   <div className='footerPergunta'>
                     <p className='textoLogin'>Para enviar uma pergunta, <a href='www.google.com'>faça login.</a></p>
                     <button className='btnCriarPergunta' onClick={()=> {
+                      if(textAreaEnviarPergunta.current.value < 1){alert('Digite algo')}else{
                       mensagemEnviarPergunta = textAreaEnviarPergunta.current.value;
                       fetchEnviarPergunta();
-                      textAreaEnviarPergunta.current.value = '';
+                      textAreaEnviarPergunta.current.value = '';}
                     }}>Enviar Pergunta</button>
                   </div>
                 

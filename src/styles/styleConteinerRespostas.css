@@ -27,3 +27,22 @@
     align-items: center;
 
 }
+
+.gostei {
+    color: blue;
+}
+
+.naoGostei {
+    color: red;
+}
+
+.gosteiIcon,
+.naoGosteiIcon {
+    height: 25px;
+}
+
+.gosteiIcon:hover,
+.naoGosteiIcon:hover {
+    transform: skew(20deg);
+    cursor: pointer;
+}
