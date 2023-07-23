@@ -18,8 +18,8 @@ export const Routess = () => {
         <nomeSalaContext.Provider value={setNome}>
         <iDPerguntaContext.Provider value={setIdPergunta}>
                 <Routes>
-                    <Route path='/login' element={<LoginSenha_Screen/>}/>
-                    <Route path='/' element={<TelaLogin_Screen/>} />
+                    <Route path='/' element={<LoginSenha_Screen/>}/>
+                    <Route path='/inicio' element={<TelaLogin_Screen/>} />
                     <Route path='/sala' element={<TelaSala_Screen infoNome={infoNome} infoId={infoId}/>} />
                     <Route path='/painelGrupoSalas' element={<PainelGrupoSalas_Screen/>} />
                     <Route path='/salaRespostas/:idSala/:id' element={<TelaSalaResposta_Screen infoNome={infoNome} infoId={infoId} IdPergunta={IdPergunta}/>} />

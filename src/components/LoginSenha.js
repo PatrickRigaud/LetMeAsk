@@ -4,7 +4,9 @@ import logo from '../assets/logo_full.svg'
 import login from '../assets/login.svg'
 import styled from "styled-components";
 import { ModalCadastrarUsuario } from './modalCadastrarUsuario';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 const FormOp = styled.form`
 display: flex;
@@ -26,6 +28,29 @@ const SemCadastroText = styled.p`
 export function LoginSenha(){
 
     const [openModal, setModal] = useState(false);
+    let email = useRef(null)
+    let senha = useRef(null)
+    const link = useNavigate()
+
+    async function fetchLogin(){ // Requisição para logar
+        await fetch('http://localhost:4000/usuariologin', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({  
+            email: email.current.value,
+            senha: senha.current.value}),
+        }).then(response => response.json()) 
+        .then(data => {
+         if(data.login){
+            link('/inicio');
+         }
+        })
+          .catch(error => {
+            console.error('Erro:', error);
+          });
+      }
 
 
     return (<>
@@ -47,11 +72,13 @@ export function LoginSenha(){
                 
                 <FormOp className='opcoes'>
                    
-                <input placeholder='Login' className='inp_codigo_sala'/>
-                <input placeholder='Senha' type="password" className='inp_codigo_sala'/>
+                <input placeholder='Email' ref={email} className='inp_codigo_sala'/>
+                <input placeholder='Senha' ref={senha} type="password" className='inp_codigo_sala'/>
 
                 <SemCadastroText>Não tem uma conta? <CliqueAqui onClick={() => {setModal(true)}}>clique aqui</CliqueAqui></SemCadastroText>
-                <button type="button" className="btn_entrar"> <img src={login} alt="imagem descrição" className='iconLogin' />Entrar</button>
+                <button type="button" className="btn_entrar" onClick={() => {
+                    fetchLogin()
+                    }}> <img src={login} alt="imagem descrição" className='iconLogin' />Entrar</button>
                
                     
 
