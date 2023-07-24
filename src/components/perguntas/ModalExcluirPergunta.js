@@ -15,25 +15,27 @@ export function ExcluirPergunta({isOpen, setModalOpen, id, setLista, lista, ence
         return listaNova
     }
 
+  const token = localStorage.getItem('token');
+console.log('teste')
 
-async function fetchDeletarPergunta(){
-  await fetch('http://localhost:4000/ask', {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ 
-      id_sala: idSala,
-      id: id}),
-  }).then(response => response.json()) 
-    .then(data => {
-      console.log(data)
-    })
-    .catch(error => {
-      console.error('Erro:', error);
-    });
-}
-
+  async function fetchDeletarPergunta(){
+    await fetch('http://localhost:4000/ask', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ 
+        id_sala: idSala,
+        id: id}),
+    }).then(response => response.json()) 
+      .then(data => {
+        console.log(data)
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+      });
+  }
 
 
     if(isOpen){
@@ -51,7 +53,8 @@ async function fetchDeletarPergunta(){
                                 return link(url)
                             } else{
                                  setLista(excluirItem())
-                                 fetchDeletarPergunta()  
+                                 fetchDeletarPergunta()
+                                 return null
                             }
                             
                             

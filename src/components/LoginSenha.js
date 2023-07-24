@@ -25,12 +25,17 @@ const SemCadastroText = styled.p`
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `
 
+const MensagemErro = styled.span`
+color: red;
+`
+
 export function LoginSenha(){
 
     const [openModal, setModal] = useState(false);
     let email = useRef(null)
     let senha = useRef(null)
     const link = useNavigate()
+    const [mensagemErro, setMensagemErro] = useState('')
 
     async function fetchLogin(){ // Requisição para logar
         await fetch('http://localhost:4000/usuariologin', {
@@ -45,6 +50,9 @@ export function LoginSenha(){
         .then(data => {
          if(data.login){
             link('/inicio');
+            localStorage.setItem('token', data.token);
+         }else{
+            setMensagemErro('Email ou Senha incorreta')
          }
         })
           .catch(error => {
@@ -75,11 +83,14 @@ export function LoginSenha(){
                 <input placeholder='Email' ref={email} className='inp_codigo_sala'/>
                 <input placeholder='Senha' ref={senha} type="password" className='inp_codigo_sala'/>
 
-                <SemCadastroText>Não tem uma conta? <CliqueAqui onClick={() => {setModal(true)}}>clique aqui</CliqueAqui></SemCadastroText>
+                <SemCadastroText>Não tem uma conta? <CliqueAqui onClick={() => {
+                    setMensagemErro('');
+                    setModal(true);
+                    }}>clique aqui</CliqueAqui></SemCadastroText>
                 <button type="button" className="btn_entrar" onClick={() => {
                     fetchLogin()
                     }}> <img src={login} alt="imagem descrição" className='iconLogin' />Entrar</button>
-               
+               <MensagemErro>{mensagemErro}</MensagemErro>
                     
 
                 </FormOp>

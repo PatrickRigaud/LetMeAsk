@@ -9,8 +9,8 @@ import { nomeSalaContext, iDSalaContext } from '../context/context.js';
 
 
 
-
 export function TelaLogin(){
+    const token = localStorage.getItem('token');
 
     let inputCodigoSala = useRef(null)
     const [visivel, setVisivel] = useState('')

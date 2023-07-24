@@ -10,6 +10,7 @@ function Sala({nomeSala, idSala}){
     let [listaPerguntas, setlistaPerguntas] = useState([]);
     const [quantidadePerguntas, setQuantidadePerguntas] = useState(0);
     const textAreaEnviarPergunta = useRef(null); // Referencia de input de texto que será enviado por fetch para gravar pergunta.
+    let [enviouPergunta, setEnviouPergunta] = useState(1)
 
     // Requisição para buscar listagem de perguntas e quantidade
     useEffect(() => {
@@ -32,7 +33,7 @@ function Sala({nomeSala, idSala}){
 
 fetchlistaPerguntas();
 
-}, [listaPerguntas ,idSala]) /*como segundo parâmetro do useEffect, passo a lista de perguntas e idSala,
+}, [enviouPergunta]) /*como segundo parâmetro do useEffect, passo a lista de perguntas e idSala,
 para que sempre que haja alguma alteração nessas variaveis, ele renderize uma vez.
 */
 
@@ -54,6 +55,7 @@ async function fetchEnviarPergunta(){ // Requisição para gravar pergunta no ba
     .catch(error => {
       console.error('Erro:', error);
     });
+    setEnviouPergunta((prev) => { return prev + 1})
 }
 
 
