@@ -4,7 +4,9 @@ import {ConteinerPergunta} from './perguntas/ConteinerPergunta';
 import {qtdPerguntasIcon}  from './perguntas/qtdPerguntasIcon';
 import sem_perguntas_img from '../assets/sem_perguntas.svg';
 
-function Sala({nomeSala, idSala}){
+
+function Sala({nomeSala, idSala, nomeUsuario, sobrenomeUsuario}){
+    let token = localStorage.getItem('token');
 
     let mensagemEnviarPergunta; // Declaração de variavel para alteração no fetch de gravar pergunta
     let [listaPerguntas, setlistaPerguntas] = useState([]);
@@ -19,6 +21,7 @@ function Sala({nomeSala, idSala}){
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
   },
   body: JSON.stringify({ data: idSala}),
 }).then(response => response.json()) 
@@ -46,7 +49,7 @@ async function fetchEnviarPergunta(){ // Requisição para gravar pergunta no ba
     },
     body: JSON.stringify({ 
       id_sala: idSala,
-      usuario: 'Mock User', 
+      usuario: nomeUsuario + ' ' + sobrenomeUsuario, 
       descricao: mensagemEnviarPergunta}),
   }).then(response => response.json()) 
     .then(data => {

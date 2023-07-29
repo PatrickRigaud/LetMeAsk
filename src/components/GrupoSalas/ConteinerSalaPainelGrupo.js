@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useState } from 'react';
 
 
 export function ConteinerSalaPainelGrupo({nomeSala, id}){
+    let token = localStorage.getItem('token');
 
     const setNome = useContext(nomeSalaContext);
     const setId = useContext(iDSalaContext);
@@ -16,8 +17,10 @@ useEffect(() => {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
   },
-  body: JSON.stringify({ data: id }),
+  body: JSON.stringify({ 
+    data: id}),
 })
   .then(response => response.json()) 
   .then(data => {

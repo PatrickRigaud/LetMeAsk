@@ -15,15 +15,12 @@ export function ExcluirPergunta({isOpen, setModalOpen, id, setLista, lista, ence
         return listaNova
     }
 
-  const token = localStorage.getItem('token');
-console.log('teste')
 
   async function fetchDeletarPergunta(){
     await fetch('http://localhost:4000/ask', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({ 
         id_sala: idSala,
