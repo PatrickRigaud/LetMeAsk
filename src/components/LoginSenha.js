@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { ModalCadastrarUsuario } from './modalCadastrarUsuario';
 import React, { useState, useRef, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-import { nomeUsuarioContext, sobrenomeUsuarioContext } from '../context/context';
+import { usuarioContext, nomeUsuarioContext, sobrenomeUsuarioContext } from '../context/context';
 
 
 const FormOp = styled.form`
@@ -38,8 +38,7 @@ export function LoginSenha(){
     const link = useNavigate()
     const [mensagemErro, setMensagemErro] = useState('')
     
-    const setNomeUsuario = useContext(nomeUsuarioContext);
-    const setSobrenomeUsuario = useContext(sobrenomeUsuarioContext);
+    const {NomeUsuario, SobrenomeUsuario} = useContext(usuarioContext)
 
     async function fetchLogin(){ // Requisição para logar
         await fetch('http://localhost:4000/usuariologin', {
@@ -55,8 +54,8 @@ export function LoginSenha(){
          if(data.login){
             link('/inicio');
             localStorage.setItem('token', data.token)
-            setNomeUsuario(data.nome);
-            setSobrenomeUsuario(data.sobrenome);
+            NomeUsuario(data.nome);
+            SobrenomeUsuario(data.sobrenome);
          }else{
             setMensagemErro('Email ou Senha incorreta')
          }

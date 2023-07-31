@@ -17,7 +17,7 @@ export function Header() {
         <header className="cabecalho">
             
             <div className="logo-full">
-                <Link to="/">
+                <Link to="/inicio">
                     <img className="letme" src={logo} alt="letme"/>
                 </Link>
             </div>

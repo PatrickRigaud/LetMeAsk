@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import {TelaLogin_Screen} from './screens/TelaLogin_Screen'
 import {TelaSala_Screen} from './screens/TelaSala_Screen'
 import { PainelGrupoSalas_Screen } from './screens/PainelGrupoSalas_Screen'
-import { nomeSalaContext, iDSalaContext, iDPerguntaContext, nomeUsuarioContext, sobrenomeUsuarioContext } from './context/context';
+import { nomeSalaContext, iDSalaContext, iDPerguntaContext, nomeUsuarioContext, sobrenomeUsuarioContext, usuarioContext } from './context/context';
 import React, {useState} from 'react';
 import { TelaSalaResposta_Screen } from './screens/TelaSalaResposta_Screen';
 import {LoginSenha_Screen} from './screens/LoginSenha_Screen'
@@ -19,8 +19,7 @@ export const Routess = () => {
         <iDSalaContext.Provider value={setId}>
         <nomeSalaContext.Provider value={setNome}>
         <iDPerguntaContext.Provider value={setIdPergunta}>
-        <nomeUsuarioContext.Provider value={setNomeUsuario}>
-        <sobrenomeUsuarioContext.Provider value={setSobrenomeUsuario}>
+        <usuarioContext.Provider value={{NomeUsuario: setNomeUsuario, SobrenomeUsuario: setSobrenomeUsuario}}>
                 <Routes>
                     <Route path='/' element={<LoginSenha_Screen/>}/>
                     <Route path='/inicio' element={<TelaLogin_Screen/>} />
@@ -28,8 +27,7 @@ export const Routess = () => {
                     <Route path='/painelGrupoSalas' element={<PainelGrupoSalas_Screen/>} />
                     <Route path='/salaRespostas/:idSala/:id' element={<TelaSalaResposta_Screen infoNome={infoNome} infoId={infoId} IdPergunta={IdPergunta}/>} />
                 </Routes>
-                        </sobrenomeUsuarioContext.Provider>
-                    </nomeUsuarioContext.Provider>
+                    </usuarioContext.Provider>
                 </iDPerguntaContext.Provider>
             </nomeSalaContext.Provider>
         </iDSalaContext.Provider>

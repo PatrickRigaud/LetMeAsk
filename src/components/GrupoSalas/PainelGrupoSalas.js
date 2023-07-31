@@ -9,13 +9,36 @@ import { SalaNaoEncontrada } from "../SalaNaoEncontradaMsg";
 
 
 
+
 export function PainelGrupoSalas(){
 
     let [listaSalaNovo, setListaSala] = useState([]);
     const [visivel, setVisivel] = useState('')
+    let token = localStorage.getItem('token');
     
     const setNome = useContext(nomeSalaContext);
     const setId = useContext(iDSalaContext);
+    const nomeSalaCriar = useRef(null)
+    const [alterador, setAlterador] = useState(0)
+
+    async function fetchCadastrarSala() {
+        await fetch('http://localhost:4000/cadastrarSala', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ nome: nomeSalaCriar.current.value}),
+    }).then(response => response.json()) 
+      .then(data => {
+        setAlterador((prev) => {prev ++})
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+      });
+    }
+    
+
 
 
     useEffect(() => {
@@ -34,7 +57,7 @@ export function PainelGrupoSalas(){
         }
     
         fetchListaSalas();
-    }, []);
+    }, [alterador]);
     
     
     const mapearPerguntas = listaSalaNovo.map((sala) =>(<ConteinerSalaPainelGrupo 
@@ -67,16 +90,23 @@ export function PainelGrupoSalas(){
                 </div>
             <div className="centerGS">
                 <div className="caixasTituloGS">
-                <h2 className="textoLogin">-- Entre em uma sala --</h2>
+                <h2 className="tituloInputs">-- Entre em uma sala --</h2>
                     <input placeholder='Digite o código da sala' ref={inputCodigoSala} className='inp_codigo_sala'/>
                     
                     <SalaNaoEncontrada visivel={visivel}/>
-
                     <Link to="/sala">
                         <button type="button" className="btn_entrar" onClick={(e)=> {
                             pesquisar(e)
                             }}> <img src={login} alt="imagem descrição" className='iconLogin'/>Entrar na sala</button>
                     </Link>
+
+                    <div className="CriarSala">
+                        <h2 className="tituloInputs">-- Crie uma sala --</h2>
+                        <input placeholder='Nome da sala' ref={nomeSalaCriar} className='inp_codigo_sala'/>
+                        <button className="botaoCriar" onClick={() => {
+                            fetchCadastrarSala()
+                        }}>Criar</button>
+                    </div>
                     <h2 className="tituloSalaGS">Todas as salas</h2>
                 </div>
                 <main className="centroPrincipalGS">
